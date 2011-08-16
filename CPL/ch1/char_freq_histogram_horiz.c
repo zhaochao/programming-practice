@@ -43,6 +43,7 @@ main()
     printf("other character: %d. freq: %%%2d.\n", n_char[CHAR_OTHER], freq[CHAR_OTHER]);
 
     printf("     |\n");
+    /*
     for (this_freq = max_freq; this_freq > 0; this_freq--) {
         printf("%3d%% |", this_freq );
         for (index = 0; index < CHAR_CAT; index++) {
@@ -56,9 +57,40 @@ main()
 
         printf("\n");
     }
+    */
+    for (index = 0; index < CHAR_CAT; index++) {
+        printf("     |");
+        for (this_freq = 0; this_freq < freq[index]; this_freq++)
+            printf("**");
+        if (index == 0)
+            printf("\n LOW |");
+        else if (index == 1)
+            printf("\n CAP |");
+        else if (index == 2)
+            printf("\nDIGIT|");
+        else if (index == 3)
+            printf("\nOTHER|");
+        for ( this_freq = 0; this_freq < (freq[index] - 1); this_freq++)
+            printf("  ");
+        if (freq[index] > 0)
+            printf(" *");
+        printf("\n     |");
+        for (this_freq = 0; this_freq < freq[index]; this_freq++)
+            printf("**");
+        printf("\n");
+    }
 
+    /*
     printf("     +");
     for (index = 0; index <= CHAR_CAT; index++)
         printf("-----");
     printf("\n       LOW  CAP DIGIT OTHER\n");
+    */
+    printf("     +");
+    for (this_freq = 0; this_freq <= max_freq; this_freq++)
+        printf("--");
+    printf("\n      ");
+    for (this_freq = 0; this_freq < max_freq; this_freq++)
+        printf("%2d", (this_freq+1));
+    printf("\n");
 }
