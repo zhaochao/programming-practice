@@ -13,15 +13,21 @@ main()
     int len;        /* current line length */
     int spacecount;     /* how many spaces for replacing tab */
     char line[MAXLINE];     /* current input line */
+    int pos;        /* position in output */
+
+    pos = 0;
 
     while ((len = my_getline(line, MAXLINE)) > 0) {
         for (i = 0; i < len; i++) {
             if (line[i] != '\t')
                 putchar(line[i]);
+                pos ++;
             else {
-                spacecount = TAP_STOPS - (i % TAP_STOPS);
+                /*spacecount = TAP_STOPS - (i % TAP_STOPS);*/
+                spacecount = TAP_STOPS - (pos % TAP_STOPS);
                 for(j = 0; j < spacecount; j++)
                     putchar(' ');
+                pos += spacecount;
             }
         }
     }
