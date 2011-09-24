@@ -19,9 +19,10 @@ main()
 
     while ((len = my_getline(line, MAXLINE)) > 0) {
         for (i = 0; i < len; i++) {
-            if (line[i] != '\t')
+            if (line[i] != '\t') {
                 putchar(line[i]);
                 pos ++;
+            }
             else {
                 /*spacecount = TAP_STOPS - (i % TAP_STOPS);*/
                 spacecount = TAP_STOPS - (pos % TAP_STOPS);
