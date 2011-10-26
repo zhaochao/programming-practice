@@ -38,7 +38,7 @@ main()
             }
             else {
                 o_spaces = (o_idx + spacecount) % TAB_STOPS;
-                o_tabs = (o_idx + spacecount) / TAB_STOPS - (o_idx + spacecount - o_spaces) / TAB_STOPS;
+                o_tabs = (o_idx + spacecount) / TAB_STOPS - o_idx / TAB_STOPS;
 
                 /*
                 for(i = 1; i <= o_spaces; i++) {
