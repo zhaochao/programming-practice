@@ -19,7 +19,7 @@ main()
     o_idx=spacecount = 0;
 
     while ((len = my_getline(line, MAXLINE)) > 0 ) {
-        for (i_idx = 0; i_idx < len; i++) {
+        for (i_idx = 0; i_idx < len; i_idx++) {
             if (line[i_idx] == ' ')
                 spacecount++;
             else if (spacecount == 0) {
