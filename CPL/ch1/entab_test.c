@@ -3,7 +3,7 @@
 /* replace blanks in the input  with minimum number of tabs
  * and spaces to achieving same spacing */
 #define MAXLINE 1000        /* max length of lines in input */
-#define TAP_STOPS 4         /* fixed set of tab stops */
+#define TAB_STOPS 4         /* fixed set of tab stops */
 
 int my_getline(char line[], int maxline);
 
@@ -24,7 +24,10 @@ main()
                 spacecount++;
             else if (spacecount == 0) {
                 putchar(line[i_idx]);
-                o_idx++;
+				if (line[i_idx] != '\t')
+					o_idx++;
+				else
+					o_idx = (o_idx / TAB_STOPS + 1) * TAB_STOPS;
                 spacecount = 0;
             }
             else if (spacecount == 1) {
@@ -34,8 +37,8 @@ main()
                 spacecount = 0;
             }
             else {
-                o_spaces = (o_idx + spacecount) % TAP_STOPS;
-                o_tabs = (o_idx + spacecount) / TAP_STOPS - (o_idx + spacecount - o_spaces) / TAP_STOPS;
+                o_spaces = (o_idx + spacecount) % TAB_STOPS;
+                o_tabs = (o_idx + spacecount) / TAB_STOPS - (o_idx + spacecount - o_spaces) / TAB_STOPS;
 
                 /*
                 for(i = 1; i <= o_spaces; i++) {
@@ -48,12 +51,12 @@ main()
                 }
                 */
                 /*while(o_spaces > 0 || o_tabs > 0) {*/
-                while((o_spaces + o_tabs) > 0) {
-                    if ((o_idx % 4) == 0) {
+                /*while((o_spaces + o_tabs) > 0) {
+                    if ((o_idx % TAB_STOPS) == 0) {
                         if (o_tabs > 0) {
                             putchar('\t');
                             o_tabs--;
-                            o_idx++;
+                            o_idx = (o_idx / TAB_STOPS + 1) * TAB_STOPS;
                         }
 						else if (o_spaces > 0) {
 							putchar(' ');
@@ -70,13 +73,28 @@ main()
 						else if (o_tabs > 0) {
                             putchar('\t');
                             o_tabs--;
-                            o_idx++;
+                            o_idx = (o_idx / TAB_STOPS + 1) * TAB_STOPS;
                         }
                     }
-                }
+                }*/
+
+				for (i = 1; i <= o_tabs; i++) {
+					putchar('\t');
+					o_tabs--;
+					o_idx = (o_idx / TAB_STOPS + 1) * TAB_STOPS;
+				}
+
+				for (i = 1; i <= o_spaces; i++) {
+					putchar(' ');
+					o_spaces--;
+					o_idx++;
+				}
 
                 putchar(line[i_idx]);
-                o_idx++;
+				if (line[i_idx] != '\t')
+					o_idx++;
+				else
+					o_idx = (o_idx / TAB_STOPS + 1) * TAB_STOPS;
 
                 spacecount = 0;
             }
