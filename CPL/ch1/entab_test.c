@@ -37,6 +37,7 @@ main()
                 o_spaces = (o_idx + spacecount) % TAP_STOPS;
                 o_tabs = (spacecount - o_spaces) / TAP_STOPS;
 
+                /*
                 for(i = 1; i <= o_spaces; i++) {
                     putchar(' ');
                     o_idx++;
@@ -44,6 +45,23 @@ main()
                 for(i = 1; i <= o_tabs; i++) {
                     putchar('\t');
                     o_idx++;
+                }
+                */
+                while(o_spaces > 0 || o_tabs > 0) {
+                    if ((o_idx % 4) == 0) {
+                        if (o_tabs > 0) {
+                            putchar('\t');
+                            o_tabs--;
+                            o_idx++;
+                        }
+                    }
+                    else {
+                        if (o_spaces > 0) {
+                            putchar(' ');
+                            o_spaces--;
+                            o_idx++;
+                        }
+                    }
                 }
 
                 putchar(line[i_idx]);
