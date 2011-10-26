@@ -20,7 +20,7 @@ main()
 
     while ((len = my_getline(line, MAXLINE)) > 0 ) {
         for (i_idx = 0; i_idx < len; i++) {
-            if (line[i] == ' ')
+            if (line[i_idx] == ' ')
                 spacecount++;
             else if (spacecount == 0) {
                 putchar(line[i_idx]);
