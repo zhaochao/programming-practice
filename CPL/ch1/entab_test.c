@@ -27,7 +27,8 @@ main()
 				if (line[i_idx] != '\t')
 					o_idx++;
 				else
-					o_idx = (o_idx / TAB_STOPS + 1) * TAB_STOPS;
+					/*o_idx = (o_idx / TAB_STOPS + 1) * TAB_STOPS;*/
+					o_idx += TAB_STOPS - (o_idx % TAB_STOPS);
                 spacecount = 0;
             }
             else if (spacecount == 1) {
@@ -56,7 +57,7 @@ main()
                         if (o_tabs > 0) {
                             putchar('\t');
                             o_tabs--;
-                            o_idx = (o_idx / TAB_STOPS + 1) * TAB_STOPS;
+							o_idx += TAB_STOPS - (o_idx % TAB_STOPS);
                         }
 						else if (o_spaces > 0) {
 							putchar(' ');
@@ -73,20 +74,18 @@ main()
 						else if (o_tabs > 0) {
                             putchar('\t');
                             o_tabs--;
-                            o_idx = (o_idx / TAB_STOPS + 1) * TAB_STOPS;
+							o_idx += TAB_STOPS - (o_idx % TAB_STOPS);
                         }
                     }
                 }*/
 
 				for (i = 1; i <= o_tabs; i++) {
 					putchar('\t');
-					o_tabs--;
-					o_idx = (o_idx / TAB_STOPS + 1) * TAB_STOPS;
+					o_idx += TAB_STOPS - (o_idx % TAB_STOPS);
 				}
 
 				for (i = 1; i <= o_spaces; i++) {
 					putchar(' ');
-					o_spaces--;
 					o_idx++;
 				}
 
@@ -94,7 +93,7 @@ main()
 				if (line[i_idx] != '\t')
 					o_idx++;
 				else
-					o_idx = (o_idx / TAB_STOPS + 1) * TAB_STOPS;
+					o_idx += TAB_STOPS - (o_idx % TAB_STOPS);
 
                 spacecount = 0;
             }
