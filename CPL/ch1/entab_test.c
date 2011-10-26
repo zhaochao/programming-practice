@@ -46,6 +46,9 @@ main()
                     o_idx++;
                 }
 
+                putchar(line[i_idx]);
+                o_idx++;
+
                 spacecount = 0;
             }
         }
