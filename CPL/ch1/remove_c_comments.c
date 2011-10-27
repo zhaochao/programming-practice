@@ -4,6 +4,8 @@
 
 main()
 {
+    int c;      /* the current character in input */
+
     /* switch to state if the current
      * character is in comment or 
      * single quote or double quote. */
