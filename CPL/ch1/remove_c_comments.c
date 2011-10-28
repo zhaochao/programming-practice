@@ -47,12 +47,14 @@ main()
                         putchar('/');
 
                     bef_is_slash = 1;
+                    bef_is_star = 0;
                 }
                 else if (c == '*') {
                     if (bef_is_star)
                         putchar('*');
 
                     bef_is_star = 1;
+                    bef_is_slash = 0;
                 }
                 else {
                     if (bef_is_slash) {
@@ -63,6 +65,14 @@ main()
                     }
 
                     putchar(c);
+                    bef_is_slash = 0;
+                    bef_is_star = 0;
+                }
+            }
+            else {
+                if (c == '*')
+                    bef_is_star = 1;
+                else {
                     bef_is_slash = 0;
                     bef_is_star = 0;
                 }
