@@ -36,15 +36,18 @@ main()
             putchar(c);
         }
         else if ((! in_s_quote) && (! in_d_quote)) {
-            if (c == '*' && bef_is_slash)
+            if (c == '*' && bef_is_slash) {
                 in_comment = 1;
-            else if (c == '/' && bef_is_star)
-                in_comment = 0;
-
+                bef_is_slash = 0;
+                bef_is_star = 0;
+            }
+            
             if (! in_comment) {
                 if (c == '/') {
                     if (bef_is_slash)
                         putchar('/');
+                    else if (bef_is_star)
+                        putchar('*');
 
                     bef_is_slash = 1;
                     bef_is_star = 0;
@@ -52,17 +55,17 @@ main()
                 else if (c == '*') {
                     if (bef_is_star)
                         putchar('*');
+                    else if (bef_is_slash)
+                        putchar('/');
 
                     bef_is_star = 1;
                     bef_is_slash = 0;
                 }
                 else {
-                    if (bef_is_slash) {
+                    if (bef_is_slash)
                         putchar('/');
-                    }
-                    else if (bef_is_star) {
+                    else if (bef_is_star)
                         putchar('*');
-                    }
 
                     putchar(c);
                     bef_is_slash = 0;
@@ -70,12 +73,32 @@ main()
                 }
             }
             else {
-                if (c == '*')
+                if (c == '*') {
+                    if (bef_is_slash == 1)
+                        bef_is_slash = 1;
+                    else
+                        bef_is_slash = 0;
+
                     bef_is_star = 1;
+                }
+                else if (c == '/') {
+                    if (bef_is_star == 1)
+                        bef_is_star = 1;
+                    else
+                        bef_is_star = 0;
+
+                    bef_is_slash = 1;
+                }
                 else {
                     bef_is_slash = 0;
                     bef_is_star = 0;
                 }
+            }
+            
+            if (c == '/' && bef_is_star) {
+                in_comment = 0;
+                bef_is_slash = 0;
+                bef_is_star = 0;
             }
         }
         else
