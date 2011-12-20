@@ -11,15 +11,13 @@ int htoi(char s[])
 	if (s[i] == '0' && (s[i+1] == 'x' || s[i+1] == 'X'))
 		i = 2;
 
-	for (;;i++) {
+	for (;s[i] != '\0' ;i++) {
 		if (s[i] >= '0' && s[i] <= '9')
-			real_value = s[i] - '0';
+			n = n * 16 + s[i] - '0';
 		else if (s[i] >= 'A' && s[i] <= 'Z')
-			real_value = s[i] - 'A' + 10;
+			n = n * 16 +  s[i] - 'A' + 10;
 		else if (s[i] >= 'a' && s[i] <= 'z')
-			real_value = s[i] - 'a' + 10;
-
-		n = n * 16 + real_value;
+			n = n * 16 + s[i] - 'a' + 10;
 	}
 
 	return n;
