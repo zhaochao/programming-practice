@@ -15,9 +15,9 @@ int htoi(char s[])
 		if (s[i] >= '0' && s[i] <= '9')
 			real_value = s[i] - '0';
 		else if (s[i] >= 'A' && s[i] <= 'Z')
-			real_value = s[i] - 'A';
+			real_value = s[i] - 'A' + 10;
 		else if (s[i] >= 'a' && s[i] <= 'z')
-			real_value = s[i] - 'a';
+			real_value = s[i] - 'a' + 10;
 
 		n = n * 16 + real_value;
 	}
