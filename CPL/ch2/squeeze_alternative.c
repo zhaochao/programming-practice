@@ -1,17 +1,28 @@
 #include <stdio.h>
 
+#define YES 1
+#define NO 0
+
 /* squeeze: detele each character in the first string
  * that matches any character in the second string. */
 void squeeze(char s1[], char s2[])
 {
     int i, j;
+    int in_second;
+
     i = 0;
+    in_second = NO;
     
     while(s1[i] != '\0') {
         for (j = 0; s2[j] != '\0'; j++) {
             if (s1[i] == s2[j])
-                s1[i] = s1[++i];
+                in_second = YES;
         }
+
+        if (in_second = NO)
+            s1[i++] = s1[i];
+        else
+            s1[i] = s1[i + 1];
     }
 }
 
