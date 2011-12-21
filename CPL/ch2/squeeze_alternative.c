@@ -19,10 +19,12 @@ void squeeze(char s1[], char s2[])
                 in_second = YES;
         }
 
-        if (in_second = NO)
+        if (in_second == NO)
             s1[i++] = s1[i];
-        else
+        else {
             s1[i] = s1[i + 1];
+            in_second = NO;
+        }
     }
 }
 
