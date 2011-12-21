@@ -14,9 +14,9 @@ int htoi(char s[])
 	for (;s[i] != '\0' ;i++) {
 		if (s[i] >= '0' && s[i] <= '9')
 			n = n * 16 + s[i] - '0';
-		else if (s[i] >= 'A' && s[i] <= 'Z')
+		else if (s[i] >= 'A' && s[i] <= 'F')
 			n = n * 16 +  s[i] - 'A' + 10;
-		else if (s[i] >= 'a' && s[i] <= 'z')
+		else if (s[i] >= 'a' && s[i] <= 'f')
 			n = n * 16 + s[i] - 'a' + 10;
 	}
 
