@@ -7,7 +7,7 @@
  * that matches any character in the second string. */
 void squeeze(char s1[], char s2[])
 {
-    int i, j;
+    int i, j, k;
     int in_second;
 
     i = 0;
@@ -22,7 +22,9 @@ void squeeze(char s1[], char s2[])
         if (in_second == NO)
             s1[i++] = s1[i];
         else {
-            s1[i] = s1[i + 1];
+            for (k = i; s1[k] != '\0'; k++) 
+                s1[k] = s1[k + 1];
+
             in_second = NO;
         }
     }
