@@ -37,5 +37,6 @@ sub ping {
     return 0;
 }
 
-$server = Server->new('192.168.1.15', 'grumbly');
+#package main;
+my $server = Server->new('192.168.1.15', 'grumbly');
 $server->ping('192.168.1.20');
