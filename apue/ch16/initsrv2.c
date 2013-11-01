@@ -3,7 +3,7 @@
 #include <sys/socket.h>
 
 int initserver(int type, const struct sockaddr *addr,
-        socklen_t alen, init qlen)
+        socklen_t alen, int qlen)
 {
     int fd, err;
     int reuse = 1;
